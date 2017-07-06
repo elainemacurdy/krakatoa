@@ -1,0 +1,31 @@
+# project: cj4ftpcpqhzfw01577rdfy5op
+# version: 3
+
+type User implements Node {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  listings: [Listing!]! @relation(name: "UserOnListing")
+  username: String!
+  updatedAt: DateTime!
+}
+
+type File implements Node {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String!
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  url: String! @isUnique
+}
+
+type Listing implements Node {
+  id: ID! @isUnique
+  author: User! @relation(name: "UserOnListing")
+  createdAt: DateTime!
+  description: String!
+  state: String!
+  title: String!
+  updatedAt: DateTime!
+}
