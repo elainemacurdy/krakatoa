@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link as DynamicLink } from '../lib/dynamicRoutes';
 import PropTypes from 'prop-types';
 
 function Listings(props) {
@@ -22,9 +22,9 @@ function Listings(props) {
         {!loading && listings.map((listing, index) =>
           <tr key={listing.id}>
             <td>
-              <Link prefetch href='/listing' as={`/listing/${listing.id}`}>
+              <DynamicLink route={`/listing/${listing.id}`} prefetch>
                 <a>{listing.title}</a>
-              </Link>
+              </DynamicLink>
             </td>
             <td>{listing.description}</td>
             <td>{listing.author.id}</td>

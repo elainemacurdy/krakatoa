@@ -1,9 +1,10 @@
 const express = require('express');
 const next = require('next');
+const routes = require('./lib/dynamicRoutes'); // https://github.com/fridays/next-routes
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const handle = app.getRequestHandler();
+const handler = routes.getRequestHandler(app);
 
 app.prepare()
   .then(() => {
@@ -20,19 +21,7 @@ app.prepare()
       }
     });
 
-    // Special routing for dynamic pages, since Next doesn't handle this natively.
-    // Note: this method also requires use of the `as` attribute in `<Link>`, or the route will (briefly) return a 404.
-    // Could also use something like https://www.npmjs.com/package/nextjs-dynamic-routes
-    server.get('/listing/:id', (req, res) => {
-      const actualPage = '/listing';
-      const queryParams = { id: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    // Default route
-    server.get('*', (req, res) => {
-      return handle(req, res)
-    });
+    server.use(handler);
 
     // Start server
     server.listen(4000, (err) => {

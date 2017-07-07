@@ -29,6 +29,7 @@ export const readListingQueryTmpl = `
     Listing(id: $id) @skip(if: $skip) {
       id
       author {
+        id
         username
       }
       createdAt
