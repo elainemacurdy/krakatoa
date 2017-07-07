@@ -21,6 +21,8 @@ app.prepare()
     });
 
     // Special routing for dynamic pages, since Next doesn't handle this natively.
+    // Note: this method also requires use of the `as` attribute in `<Link>`, or the route will (briefly) return a 404.
+    // Could also use something like https://www.npmjs.com/package/nextjs-dynamic-routes
     server.get('/listing/:id', (req, res) => {
       const actualPage = '/listing';
       const queryParams = { id: req.params.id };

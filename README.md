@@ -17,7 +17,6 @@ npm start
 ```
 
 ## Known issues
-- Listing pages 404 when you first hit them, before refreshing.
 - Newly created listings don't appear right away on the Listings page; looks like caching.
 - When navigating from the `update` version of the Listing page, to the `create` version, the form fields do not clear out.
 
@@ -27,3 +26,5 @@ npm start
 - Add eslint
 - Figure out CSS
 - Add ability to delete a listing
+- Figure out the getInitialProps thing-- only the page gets it? How to call it for child components?
+- Add env config

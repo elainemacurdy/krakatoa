@@ -22,7 +22,7 @@ function Listings(props) {
         {!loading && listings.map((listing, index) =>
           <tr key={listing.id}>
             <td>
-              <Link prefetch href={`/listing/${listing.id}`}>
+              <Link prefetch href='/listing' as={`/listing/${listing.id}`}>
                 <a>{listing.title}</a>
               </Link>
             </td>
