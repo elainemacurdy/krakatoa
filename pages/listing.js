@@ -3,6 +3,7 @@ import { compose, gql, graphql } from 'react-apollo';
 
 import BaseLayout from '../components/BaseLayout';
 import ListingForm from '../components/forms/ListingForm';
+import { Link as DynamicLink } from '../lib/dynamicRoutes';
 import withData from '../lib/withData';
 import { createListingQueryTmpl, updateListingQueryTmpl, readListingQueryTmpl } from '../queries/listing';
 
@@ -33,6 +34,13 @@ let ListingPage = (props) => {
 
   return (
     <BaseLayout>
+      <DynamicLink route='/listing/cj4sq92osmp8s0194t5cds8xh' prefetch>
+        <a>Chair (implicit)</a>
+      </DynamicLink>
+      &nbsp;|&nbsp;
+      <DynamicLink route='/listing/cj4sxh5wzwoqy0175l42ijw0z' prefetch>
+        <a>Cat bed (implicit)</a>
+      </DynamicLink>
       <ListingForm
         handleCreate={handleCreate}
         handleUpdate={handleUpdate}
