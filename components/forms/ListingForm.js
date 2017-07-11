@@ -60,6 +60,7 @@ class ListingForm extends Component {
 }
 
 ListingForm.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   handleCreate: PropTypes.func.isRequired,
   handleUpdate: PropTypes.func.isRequired,
   initialValues: PropTypes.object,
