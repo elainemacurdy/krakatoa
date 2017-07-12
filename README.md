@@ -18,7 +18,6 @@ npm start
 
 ## Known issues
 - Newly created listings don't appear right away on the Listings page; looks like caching.
-- When navigating from the `update` version of the Listing page, to the `create` version, the form fields do not clear out.
 
 ## To do
 - Need to implement paging on listings page
@@ -26,5 +25,4 @@ npm start
 - Add eslint
 - Figure out CSS
 - Add ability to delete a listing
-- Figure out the getInitialProps thing-- only the page gets it? How to call it for child components?
 - Add env config

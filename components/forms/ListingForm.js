@@ -2,18 +2,11 @@ import $ from 'jquery';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Field, initialize, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
+
+import withReinitializeForm from '../../lib/withReinitializeForm';
 
 class ListingForm extends Component {
-  componentWillReceiveProps(nextProps) {
-    const { dispatch, initialValues } = this.props;
-    const nextInitialValues = nextProps.initialValues;
-    const isListingChanging = !Object.is(initialValues, nextInitialValues);
-    if (isListingChanging) {
-      dispatch(initialize('listing', nextInitialValues));
-    }
-  }
-
   completeSubmit(listing) {
     $('#listingFormNotification')
       .text(`Listing for "${listing.title}" has been saved successfully!`)
@@ -69,4 +62,4 @@ ListingForm.propTypes = {
 
 export default reduxForm({
   form: 'listing'
-})(ListingForm);
+})(withReinitializeForm(ListingForm));
